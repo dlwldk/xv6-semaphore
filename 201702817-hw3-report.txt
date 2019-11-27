@@ -1,0 +1,18 @@
+
+
+
+
+
+//컴퓨터전자시스템공학부 201702817 이지아
+//procon.c 컴파일 에러
+1. sem_wait(int sem_id)
+이 함수는 value값을 사용하기 위한 함수이다. 자원을 쓰는 것이기 때문에 value값을 하나 줄여주고 만약 음수값을 가진다면 value가 없는 상태에서 가져가려 한 것 이므로 waiters에 넣고 block 시켜준다. 
+
+2. sem_signal(int sem_id)
+이 함수는 value값을 반납하기 위한 함수이다. 자원을 반납하는것이기 때문에 value값을 하나 늘려주고 만약 음수값을 가진다면 누군가 그 자원을 쓰려고 기다리고 있는 것이기 때문에 대기 queue에서 맨앞의 값을 꺼내서 wakeup 한다.
+
+3. procon.c
+multi producer, consumer경우 보호를 위해 mutex, full, empty에 대한 wait, signal을 해야한다.
+producer에서 data를 생성하고, consumer에서 data를 사용한다.
+main함수에서 producer thread 2개, consumer thread 2개 생성한다.
+
